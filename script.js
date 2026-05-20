@@ -1,3 +1,4 @@
+// Geri Sayım Sistemi (12 Haziran 2027)
 const weddingDate = new Date("June 12, 2027 19:00:00").getTime();
 
 const countdownFunction = setInterval(function() {
@@ -11,14 +12,19 @@ const countdownFunction = setInterval(function() {
 
   const countdownElement = document.getElementById("countdown");
   if (countdownElement) {
-    countdownElement.innerHTML = days + " Gün " + hours + " Saat " + minutes + " Dakika " + seconds + " Saniye ";
+    countdownElement.innerHTML = `
+      <div style="display:flex; justify-content:center; gap:15px;">
+        <div><span style="font-size:2rem; font-family:'Playfair Display'; display:block; font-weight:bold;">${days}</span>Gün</div>
+        <div><span style="font-size:2rem; font-family:'Playfair Display'; display:block; font-weight:bold;">${hours}</span>Saat</div>
+        <div><span style="font-size:2rem; font-family:'Playfair Display'; display:block; font-weight:bold;">${minutes}</span>Dk</div>
+        <div><span style="font-size:2rem; font-family:'Playfair Display'; display:block; font-weight:bold;">${seconds}</span>Sn</div>
+      </div>
+    `;
   }
 
   if (distance < 0) {
     clearInterval(countdownFunction);
-    if (countdownElement) {
-      countdownElement.innerHTML = "Sonsuzluğa Adım Atıldı!";
-    }
+    if (countdownElement) countdownElement.innerHTML = "Sonsuzluğa Adım Atıldı!";
   }
 }, 1000);
 
@@ -27,18 +33,18 @@ const sealContainer = document.getElementById("sealContainer");
 const mainContent = document.getElementById("mainContent");
 const music = document.getElementById("music");
 
-if (sealContainer && mainContent) {
+if (sealContainer && mainContent && music) {
+  music.load();
+
   sealContainer.addEventListener("click", function() {
-    // Önce mühür ekranını kapat ve içeriği aç (Müzik hata verse bile site kesinlikle açılacak)
     sealContainer.style.display = "none";
-    mainContent.style.style.display = "none" ? mainContent.style.display = "block" : null; // Güvenli açılış
     mainContent.style.display = "block";
 
-    // Sonra müziği çalmayı dene
-    if (music) {
-      music.play().catch(function(error) {
-        console.log("Müzik çalma engellendi veya dosya bulunamadı:", error);
-      });
-    }
+    // Müzik çalmayı dener, hata verirse sistemi kilitlemez
+    music.play().then(function() {
+      console.log("Müzik çalıyor.");
+    }).catch(function(error) {
+      console.log("Müzik engellendi veya bulunamadı:", error);
+    });
   });
 }
