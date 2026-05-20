@@ -27,20 +27,18 @@ const sealContainer = document.getElementById("sealContainer");
 const mainContent = document.getElementById("mainContent");
 const music = document.getElementById("music");
 
-if (sealContainer && mainContent && music) {
-  // Telefonlar için müziği ilk yüklemede hazırla
-  music.load();
-
+if (sealContainer && mainContent) {
   sealContainer.addEventListener("click", function() {
-    // Önce müziği başlatmayı dene (Tarayıcı izni için en kritik an)
-    music.play().then(function() {
-      console.log("Müzik başarıyla çalıyor.");
-    }).catch(function(error) {
-      console.log("Müzik çalma hatası:", error);
-    });
-
-    // Mühür ekranını gizle ve ana içeriği göster
+    // Önce mühür ekranını kapat ve içeriği aç (Müzik hata verse bile site kesinlikle açılacak)
     sealContainer.style.display = "none";
+    mainContent.style.style.display = "none" ? mainContent.style.display = "block" : null; // Güvenli açılış
     mainContent.style.display = "block";
+
+    // Sonra müziği çalmayı dene
+    if (music) {
+      music.play().catch(function(error) {
+        console.log("Müzik çalma engellendi veya dosya bulunamadı:", error);
+      });
+    }
   });
 }
