@@ -1,3 +1,4 @@
+/* Temel Ayarlar */
 * {
   margin: 0;
   padding: 0;
@@ -9,10 +10,11 @@ body {
   overflow-x: hidden;
   color: #fff;
   line-height: 1.6;
+  /* Premium Düğün Rengi: Asil fildişi/krem arka plan */
   background-color: #f6f3ed;
 }
 
-/* Sabit Yüzen Zarif Müzik Kontrol Butonu */
+/* Yüzen Zarif Müzik Kontrol Butonu */
 .music-control {
   position: fixed;
   top: 20px;
@@ -29,46 +31,31 @@ body {
   gap: 8px;
   font-size: 0.75rem;
   font-weight: 600;
-  color: #8c7853;
+  color: #8c7853; /* Gold/Bronz tonu */
   border: 1px solid rgba(140, 120, 83, 0.2);
+  transition: all 0.3s;
 }
 
-/* 1. KATMAN: Ana Arka Plan (IMG_3236.PNG yapıldı) */
-.main-background {
+/* Arka Plan Efekti Katmanı */
+.stars {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100vh;
-  background-image: url('IMG_3236.PNG');
-  background-size: cover;
-  background-position: center;
-  z-index: -3;
-}
-
-/* 2. KATMAN: Üzerindeki Desen Tül Efekti (pngwing.com.png) */
-.stars-effect {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-image: url('pngwing.com.png');
-  background-size: cover;
-  background-position: center;
-  z-index: -2;
-  opacity: 0.15; /* Fotoğrafın arkadan görünmesi için şeffaf tül hissi */
+  height: 100%;
+  /* Videodaki tüy gibi hafif yıldızlı arka plan deseni */
+  background: url('stars-bg.jpg') center/cover;
+  z-index: -1;
+  opacity: 0.15; /* Çok şeffaf yaparak zarif durmasını sağladık */
   pointer-events: none;
 }
 
-/* Giriş Ekranı (Mühür Alanı) */
+/* Giriş Mühür Ekranı (Lüks ve Sade) */
 .seal-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(5, 8, 22, 0.96);
+  background-color: #f6f3ed; /* Krem arka plan */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,120 +64,126 @@ body {
 }
 
 .seal-wrapper {
-  padding: 30px;
+  padding: 20px;
 }
 
-/* Yuvarlak Fotoğraflı Şık Mühür */
 .seal {
-  width: 170px;
-  height: 170px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid #d4af37;
+  width: 150px;
   cursor: pointer;
-  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0px 8px 25px rgba(212, 175, 55, 0.4);
+  transition: transform 0.6s ease;
+  filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.15));
 }
 
 .seal:hover {
-  transform: scale(1.08) rotate(3deg);
+  transform: scale(1.05);
 }
 
 .seal-text {
   font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   margin-top: 25px;
-  color: #d4af37;
-  letter-spacing: 1px;
+  color: #8c7853;
 }
 
 .seal-subtext {
-  font-size: 0.85rem;
-  color: #a6a195;
+  font-size: 0.95rem;
+  color: #a1a1a1;
   margin-top: 6px;
 }
 
-/* Ana İçerik */
+/* Ana İçerik Alanı */
 .main-content {
   display: none;
-  max-width: 480px;
+  max-width: 500px;
   margin: 0 auto;
-  padding: 40px 15px;
+  padding: 20px;
+  animation: fadeIn 2.5s ease forwards;
 }
 
-.hero {
-  height: 60vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+/* Lüks Oval Fotoğraf Çerçevesi */
+.photo-frame {
+  width: 280px;
+  height: 380px;
+  margin: 60px auto 30px auto;
+  border-radius: 140px; /* Tam dikey oval */
+  overflow: hidden;
+  border: 4px solid #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.couple-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .couple-names {
   font-family: 'Playfair Display', serif;
-  font-size: 3rem;
+  font-size: 2.8rem;
   font-weight: 400;
+  text-align: center;
   margin-bottom: 25px;
-  color: #fff;
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+  color: #333;
 }
 
 .invite-text {
   font-family: 'Playfair Display', serif;
   font-style: italic;
+  text-align: center;
   font-size: 1.1rem;
-  padding: 0 15px;
-  color: #f1f1f1;
+  padding: 0 20px;
+  color: #666;
+  margin-bottom: 60px;
   line-height: 1.8;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
 }
 
-/* Premium Beyaz Kartlar */
-.card {
-  background: rgba(255, 255, 255, 0.96);
-  color: #4a4a4a;
+/* Kart Bölümleri */
+.countdown-section, .location, .rsvp {
+  background: #ffffff;
   margin-bottom: 35px;
-  padding: 40px 25px;
+  padding: 45px 30px;
   border-radius: 28px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 25px rgba(0,0,0,0.03);
   text-align: center;
 }
 
 h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: #8c7853;
   margin-bottom: 25px;
 }
 
+/* Geri Sayım Kutucukları */
 #countdown {
   font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   color: #333;
+  letter-spacing: 1px;
 }
 
+/* Harita Alanı */
 .hotel-name {
-  font-weight: 600;
-  margin-bottom: 20px;
+  font-weight: bold;
+  margin-bottom: 18px;
 }
 
 .map-container {
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
 .map-link {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 18px;
+  font-size: 0.9rem;
   color: #8c7853;
   text-decoration: none;
-  font-weight: 600;
-  border-bottom: 1px solid #8c7853;
+  border-bottom: 1px dashed #8c7853;
 }
 
-/* Form Elemanları */
+/* Form Tasarımı */
 .form-group {
   text-align: left;
   margin-bottom: 22px;
@@ -198,30 +191,54 @@ h2 {
 
 .form-group label {
   display: block;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   margin-bottom: 8px;
-  color: #7c766a;
-  text-transform: uppercase;
+  color: #666;
+  font-weight: bold;
 }
 
 input, textarea {
   width: 100%;
   padding: 15px;
-  border: 1px solid #dcdcdc;
+  border: 1px solid #e0decb;
   border-radius: 14px;
-  background-color: #fbfbfb;
+  background-color: #faf9f5;
+  font-family: inherit;
+  font-size: 1rem;
   color: #333;
   outline: none;
+  transition: border 0.3s;
+}
+
+input:focus, textarea:focus {
+  border-color: #8c7853;
+}
+
+textarea {
+  height: 110px;
+  resize: none;
 }
 
 button {
   width: 100%;
-  padding: 16px;
+  padding: 18px;
   background-color: #8c7853;
   color: #fff;
   border: none;
   border-radius: 14px;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 6px 15px rgba(140, 120, 83, 0.3);
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 4px 12px rgba(140, 120, 83, 0.2);
+}
+
+button:hover {
+  background-color: #736243;
+  transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
