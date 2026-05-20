@@ -5,18 +5,24 @@
 }
 
 body {
-  background: #050816;
+  /* Arka Plan: IMG_3236.PNG yapıldı */
+  background-image: url('pngwing.com.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   color: white;
   font-family: 'Georgia', serif;
   overflow-x: hidden;
 }
 
 .stars {
-  background-image: url('pngwing.com.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: url('stars-bg.jpg') center/cover;
+  z-index: -1;
+  opacity: 0.3; 
 }
 
 .seal-container {
@@ -26,6 +32,8 @@ body {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  /* İlk ekranda fotoğrafın arkada hafif karartılı ve şık durması için filtre */
+  background: rgba(5, 8, 22, 0.6); 
 }
 
 .seal {
@@ -40,6 +48,8 @@ body {
 .main-content {
   display: none;
   animation: fadeIn 2s ease;
+  /* İçerik açıldığında yazıların fotoğrafın üstünde rahat okunması için şeffaf siyah katman */
+  background: rgba(5, 8, 22, 0.65); 
 }
 
 .hero {
@@ -52,19 +62,21 @@ body {
 }
 
 .hero h1 {
-  font-size: 4rem;
+  font-size: 3.5rem;
   margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
 }
 
 .hero p {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
 }
 
 .countdown-section,
 .location,
 .rsvp {
-  padding: 80px 20px;
-  max-width: 800px;
+  padding: 60px 20px;
+  max-width: 600px;
   margin: auto;
   text-align: center;
 }
@@ -72,6 +84,8 @@ body {
 #countdown {
   margin-top: 20px;
   font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
 }
 
 form {
@@ -87,6 +101,8 @@ textarea {
   border-radius: 15px;
   border: none;
   font-size: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  color: black;
 }
 
 button {
@@ -97,6 +113,7 @@ button {
   color: black;
   font-size: 1rem;
   cursor: pointer;
+  font-weight: bold;
 }
 
 button:hover {
