@@ -1,3 +1,4 @@
+/* GENEL AYARLAR VE RENK PALETİ */
 * {
   margin: 0;
   padding: 0;
@@ -6,274 +7,385 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
+  background-color: #030712; /* Derin gece karanlığı */
   overflow-x: hidden;
-  color: #fff;
-  line-height: 1.6;
+  color: #f3f4f6;
 }
 
-/* Sabit Yüzen Zarif Müzik Kontrol Butonu */
+/* SABİT YÜZEN MÜZİK BUTONU */
 .music-control {
   position: fixed;
   top: 20px;
   right: 20px;
-  background: rgba(255, 255, 255, 0.85);
-  padding: 10px 16px;
+  background: rgba(10, 17, 40, 0.85);
+  padding: 10px 18px;
   border-radius: 30px;
-  backdrop-filter: blur(5px);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  z-index: 100;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 0.75rem;
   font-weight: 600;
-  color: #8c7853;
-  border: 1px solid rgba(140, 120, 83, 0.2);
+  color: #d4af37;
+  border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
-/* 1. KATMAN: Ana Arka Plan */
-.main-background {
+/* ==========================================================================
+   CSS İLE SIFIRDAN ZARF MEKANİZMASI VE AÇILIŞ ANİMASYONU
+   ========================================================================== */
+.envelope-wrapper {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  background-image: url('IMG_3250.PNG');
-  background-size: cover;
-  background-position: center;
-  z-index: -3;
-}
-
-/* 2. KATMAN: Tül Efekti */
-.stars-effect {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-image: url('pngwing.com.png');
-  background-size: cover;
-  background-position: center;
-  z-index: -2;
-  opacity: 0.12;
-  pointer-events: none;
-}
-
-/* Giriş Ekranı */
-.seal-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(5, 8, 22, 0.96);
+  background-color: #02040a;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 999;
+  transition: transform 1.2s cubic-bezier(0.85, 0, 0.15, 1), opacity 1s ease;
+}
+
+.envelope {
+  position: relative;
+  width: 360px;
+  height: 260px;
+  background-color: #0b132b; /* Lüks lacivert kumaş tonu */
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  border-radius: 4px;
+}
+
+/* Zarfın Üst Kapağı (Üçgen Form) */
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 180px solid transparent;
+  border-right: 180px solid transparent;
+  border-top: 140px solid #1c2541; /* Hafif açık ton derinlik katması için */
+  z-index: 3;
+  transform-origin: top;
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Zarfın Yan Katlamaları */
+.envelope-back {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 180px solid rgba(11, 19, 43, 0.95);
+  border-right: 180px solid rgba(11, 19, 43, 0.95);
+  border-bottom: 140px solid #0f172a;
+  z-index: 2;
+  border-radius: 0 0 4px 4px;
+}
+
+/* Zarfı Kilitleyen Canva Mühürü */
+.envelope-seal {
+  position: absolute;
+  top: 110px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75px;
+  height: 75px;
+  z-index: 4;
+  cursor: pointer;
+  transition: transform 0.5s ease, opacity 0.4s ease;
+}
+
+.envelope-seal img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(212, 175, 55, 0.5));
+}
+
+.envelope-seal:hover {
+  transform: translateX(-50%) scale(1.1);
+}
+
+.envelope-text {
+  position: absolute;
+  bottom: -70px;
+  width: 100%;
   text-align: center;
 }
 
-.seal-wrapper {
-  padding: 30px;
-}
-
-/* Mühür Ayarları */
-.seal {
-  width: 180px;
-  height: 180px;
-  object-fit: contain;
-  cursor: pointer;
-  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  filter: drop-shadow(0px 8px 20px rgba(212, 175, 55, 0.4));
-}
-
-.seal:hover {
-  transform: scale(1.08) rotate(2deg);
-}
-
-.seal-text {
+.envelope-text h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
-  margin-top: 25px;
   color: #d4af37;
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.envelope-text p {
+  font-size: 0.8rem;
+  color: #9ca3af;
   letter-spacing: 1px;
 }
 
-.seal-subtext {
-  font-size: 0.85rem;
-  color: #a6a195;
-  margin-top: 6px;
+/* SİHİRLİ AÇILIŞ TETİKLEYİCİ SINIFLARI (JS ile eklenecek) */
+.envelope-wrapper.open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
 }
 
-/* Ana İçerik Alanı Boşluk Ayarı */
+.envelope-wrapper.open .envelope-seal {
+  opacity: 0;
+  transform: translateX(-50%) scale(0.5);
+  pointer-events: none;
+}
+
+.envelope-wrapper.slide-out {
+  transform: translateY(100vh);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   YILDIZLI GECE TEMALI ANA İÇERİK ALANI
+   ========================================================================== */
 .main-content {
   display: none;
-  max-width: 480px;
+  max-width: 450px;
   margin: 0 auto;
-  padding: 80px 15px 40px 15px; /* Çentiğin arkasına kaçmaması için üstten boşluk açıldı */
+  padding: 100px 18px 40px 18px;
+  /* Arka plandaki o asil Gece Takımyıldızı Tasarımı */
+  background-image: url('pngwing.com.png');
+  background-size: contain;
+  background-attachment: fixed;
+  background-position: center;
 }
 
-.hero {
-  height: 50vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+/* OVAL ÇİFT FOTOĞRAFI ALANI (VİDEODAKİ GİBİ ASİL) */
+.hero-section {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+}
+
+.oval-frame {
+  width: 240px;
+  height: 330px;
+  margin: 0 auto 30px auto;
+  border-radius: 50% / 40%; /* Kusursuz dikey oval görünüm */
+  border: 3px solid #d4af37;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25);
+}
+
+.oval-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .couple-names {
   font-family: 'Playfair Display', serif;
-  font-size: 3rem;
+  font-size: 2.6rem;
+  color: #d4af37;
   font-weight: 400;
-  margin-bottom: 25px;
-  color: #fff;
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+  margin-bottom: 20px;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
 .invite-text {
   font-family: 'Playfair Display', serif;
   font-style: italic;
-  font-size: 1.1rem;
-  padding: 0 15px;
-  color: #f1f1f1;
+  font-size: 1.05rem;
   line-height: 1.8;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+  color: #e5e7eb;
+  padding: 0 10px;
 }
 
-/* Premium Kartlar */
-.card {
-  background: rgba(255, 255, 255, 0.96);
-  color: #4a4a4a;
-  margin-bottom: 35px;
-  padding: 35px 25px;
-  border-radius: 28px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+/* LUXURY PREMIUM KART YAPILARI */
+.luxury-card {
+  background: rgba(11, 19, 43, 0.75); /* Yarı şeffaf asil lacivert kart */
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 24px;
+  padding: 30px 20px;
+  margin-bottom: 30px;
   text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-h2 {
+.card-title {
   font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  color: #8c7853;
-  margin-bottom: 20px;
+  font-size: 1.35rem;
+  color: #d4af37;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
 }
 
-/* Geri Sayım Şık Tasarım Elemanları */
+/* GERİ SAYIM MODERN SAYACIN KUTULARI */
 #countdown {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  font-family: 'Playfair Display', serif;
+  gap: 12px;
 }
 
 .countdown-item {
-  background: rgba(140, 120, 83, 0.1);
-  padding: 10px 15px;
-  border-radius: 12px;
-  min-width: 65px;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  padding: 12px 10px;
+  border-radius: 16px;
+  min-width: 68px;
 }
 
 .countdown-number {
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: #8c7853;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #d4af37;
   display: block;
 }
 
 .countdown-label {
-  font-size: 0.75rem;
-  color: #666;
-  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  color: #9ca3af;
+  text-transform: uppercase;
 }
 
-/* Yeni Tarih Saat Kartı Stilleri */
-.date-box, .time-box {
-  margin-bottom: 20px;
+/* TARİH VE SAAT TASARIMI */
+.datetime-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
 }
-.main-date {
+
+.dt-item {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 15px 5px;
+  border-radius: 16px;
+}
+
+.dt-icon {
   font-size: 1.4rem;
-  font-weight: 600;
-  color: #333;
-}
-.sub-date {
-  font-size: 1rem;
-  font-style: italic;
-  color: #666;
-  font-family: 'Playfair Display', serif;
-}
-.main-time {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #333;
-}
-.calendar-icon, .clock-icon {
-  font-size: 1.5rem;
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
 
-.rsvp-deadline {
+.dt-main {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.dt-sub {
   font-size: 0.85rem;
-  color: #c93b3b;
-  margin-bottom: 20px;
+  color: #9ca3af;
+  font-family: 'Playfair Display', serif;
   font-style: italic;
 }
 
+/* HARİTA VE YOL TARİFİ ALANI */
 .hotel-name {
   font-weight: 600;
-  margin-bottom: 15px;
+  font-size: 1.05rem;
+  margin-bottom: 20px;
+  color: #fff;
 }
 
-.map-container {
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.map-link {
-  display: inline-block;
-  margin-top: 15px;
-  color: #8c7853;
+.map-anchor {
   text-decoration: none;
+}
+
+.map-image-btn {
+  height: 220px;
+  border-radius: 18px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 15px;
+  box-shadow: inset 0 -60px 40px rgba(0,0,0,0.5);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.map-image-btn span {
+  background: #d4af37;
+  color: #030712;
+  padding: 10px 24px;
+  border-radius: 30px;
   font-weight: 600;
-  border-bottom: 1px solid #8c7853;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
 }
 
-.form-group {
-  text-align: left;
-  margin-bottom: 22px;
-}
-
-.form-group label {
-  display: block;
+/* FORM ELEMANLARI VE INPUT GRUPLARI */
+.rsvp-warning {
   font-size: 0.8rem;
-  margin-bottom: 8px;
-  color: #7c766a;
+  color: #f87171;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.input-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-bottom: 6px;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 input, textarea {
   width: 100%;
-  padding: 15px;
-  border: 1px solid #dcdcdc;
-  border-radius: 14px;
-  background-color: #fbfbfb;
-  color: #333;
+  padding: 14px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 12px;
+  background-color: #030712;
+  color: #fff;
   outline: none;
 }
 
-button {
+input:focus, textarea:focus {
+  border-color: #d4af37;
+}
+
+.gold-btn {
   width: 100%;
   padding: 16px;
-  background-color: #8c7853;
-  color: #fff;
+  background: #d4af37;
+  color: #030712;
   border: none;
-  border-radius: 14px;
+  border-radius: 12px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 6px 15px rgba(140, 120, 83, 0.3);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* DROBOX ALANI SÜSLEMELERİ */
+.photo-desc {
+  font-size: 0.85rem;
+  color: #d1d5db;
+  margin-bottom: 25px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.dropbox-anchor {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  background-color: transparent;
+  color: #d4af37;
+  border: 2px dashed rgba(212, 175, 55, 0.5);
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
 }
