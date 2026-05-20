@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Doğukan & Egemen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -11,46 +14,70 @@
 <div class="stars"></div>
 
 <div class="seal-container" id="sealContainer">
-  <img src="IMG_3236.PNG" class="seal" id="seal" />
-  <p>Mühüre Dokun</p>
+  <div class="seal-wrapper">
+    <img src="IMG_3236.PNG" class="seal" id="seal" alt="Mühür" />
+    <p class="seal-text">Mühüre Tıklayınız</p>
+    <p class="seal-subtext">Bu davetiye size özeldir</p>
+  </div>
 </div>
 
 <div class="main-content" id="mainContent">
 
-  <audio<audio id="music" loop playsinline preload="auto">
-  <source src="Sezen.mp3.mp3" type="audio/mpeg">
+  <audio id="music" loop playsinline preload="auto">
+    <source src="sezen.mp3.mp3" type="audio/mpeg">
+    <source src="sezen.mp3" type="audio/mpeg">
+  </audio>
 
   <section class="hero">
-    <h1>Doğukan & Egemen</h1>
-    <p>Vega ve Altair'in altında sonsuzluğa...</p>
+    <div class="photo-frame">
+      <img src="pngwing.com.png" alt="Doğukan & Egemen" class="couple-photo">
+    </div>
+    <h1 class="couple-names">Doğukan & Egemen</h1>
+    <p class="invite-text">
+      "Birlikte kurduğumuz hayalleri gerçeğe dönüştürdüğümüz ve hayatlarımızı birleştirdiğimiz bu özel günde, sevincimizi bizimle paylaşmanızdan büyük mutluluk duyacağız."
+    </p>
   </section>
 
   <section class="countdown-section">
-    <h2>Düğüne Kalan Süre</h2>
+    <h2>Düğünümüze Son</h2>
     <div id="countdown"></div>
   </section>
 
   <section class="location">
-    <h2>Konum</h2>
-    <p>Görgülü Hotel — Edirne / Keşan</p>
-
-    <iframe
-      src="https://www.google.com/maps?q=Görgülü+Hotel+Keşan&output=embed"
-      width="100%"
-      height="300"
-      style="border:0; border-radius:20px"
-      allowfullscreen=""
-      loading="lazy">
-    </iframe>
+    <h2>Düğün Salonu Konumu</h2>
+    <p class="hotel-name">Görgülü Hotel — Edirne / Keşan</p>
+    
+    <div class="map-container">
+      <iframe
+        src="http://googleusercontent.com/maps.google.com/2"
+        width="100%"
+        height="300"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy">
+      </iframe>
+    </div>
+    <a href="https://maps.google.com" target="_blank" class="map-link">Konumu haritalarda açmak için tıklayın</a>
   </section>
 
   <section class="rsvp">
-    <h2>Katılım Formu</h2>
+    <h2>Lütfen Katılım Durumunuzu Bildirin</h2>
 
     <form action="https://formsubmit.co/dgkngngr97@gmail.com" method="POST">
-      <input type="text" name="name" placeholder="Ad Soyad" required>
-      <input type="number" name="person" placeholder="Kaç Kişi" required>
-      <textarea name="message" placeholder="Mesajınız"></textarea>
+      <div class="form-group">
+        <label>Ad Soyad *</label>
+        <input type="text" name="name" placeholder="Adınız ve Soyadınız" required>
+      </div>
+
+      <div class="form-group">
+        <label>Kaç kişi katılıyorsunuz? (siz dahil)</label>
+        <input type="number" name="person" placeholder="Kişi Sayısı" required>
+      </div>
+
+      <div class="form-group">
+        <label>Bize bir not bırakın</label>
+        <textarea name="message" placeholder="Mesajınız..."></textarea>
+      </div>
 
       <button type="submit">Gönder</button>
     </form>
