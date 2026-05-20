@@ -5,126 +5,214 @@
 }
 
 body {
-  /* Arka Plan: IMG_3236.PNG yapıldı */
-  background-image: url('pngwing.com.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  color: white;
-  font-family: 'Georgia', serif;
+  background-color: #f7f4ef; /* Videodaki gibi asil fildişi/krem arka plan */
+  color: #4a4a4a; /* Gözü yormayan koyu gri font rengi */
+  font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
+  line-height: 1.6;
 }
 
+/* Arka Plan Efekti */
 .stars {
   position: fixed;
   width: 100%;
   height: 100%;
   background: url('stars-bg.jpg') center/cover;
   z-index: -1;
-  opacity: 0.3; 
+  opacity: 0.15;
+  pointer-events: none;
 }
 
+/* Giriş Mühür Ekranı (Zarif ve Sade) */
 .seal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100vh;
+  background-color: #f7f4ef;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-  /* İlk ekranda fotoğrafın arkada hafif karartılı ve şık durması için filtre */
-  background: rgba(5, 8, 22, 0.6); 
+  z-index: 999;
+  text-align: center;
+}
+
+.seal-wrapper {
+  padding: 20px;
 }
 
 .seal {
-  width: 180px;
-  transition: transform 1s ease;
+  width: 150px;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+  filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.1));
 }
 
 .seal:hover {
   transform: scale(1.05);
 }
 
+.seal-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  margin-top: 20px;
+  color: #8c7853; /* Gold/Bronz tonu */
+}
+
+.seal-subtext {
+  font-size: 0.9rem;
+  color: #a1a1a1;
+  margin-top: 5px;
+}
+
+/* Ana İçerik Alanı */
 .main-content {
   display: none;
-  animation: fadeIn 2s ease;
-  /* İçerik açıldığında yazıların fotoğrafın üstünde rahat okunması için şeffaf siyah katman */
-  background: rgba(5, 8, 22, 0.65); 
+  max-width: 500px; /* Mobil uyumlu dar şık görünüm */
+  margin: 0 auto;
+  padding: 20px;
+  animation: fadeIn 2.5s ease forwards;
 }
 
-.hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+/* Videodaki Şık Oval Çerçeve */
+.photo-frame {
+  width: 260px;
+  height: 360px;
+  margin: 40px auto 20px auto;
+  border-radius: 130px; /* Tam dikey oval form */
+  overflow: hidden;
+  border: 4px solid #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.couple-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.couple-names {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 400;
   text-align: center;
-}
-
-.hero h1 {
-  font-size: 3.5rem;
   margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+  color: #333;
 }
 
-.hero p {
-  font-size: 1.2rem;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+.invite-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  text-align: center;
+  font-size: 1.05rem;
+  padding: 0 20px;
+  color: #666;
+  margin-bottom: 50px;
 }
 
-.countdown-section,
-.location,
-.rsvp {
-  padding: 60px 20px;
-  max-width: 600px;
-  margin: auto;
+/* Sayfa Bölümleri */
+.countdown-section, .location, .rsvp {
+  background: #ffffff;
+  margin-bottom: 30px;
+  padding: 40px 25px;
+  border-radius: 24px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.03);
   text-align: center;
 }
 
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: #8c7853;
+  margin-bottom: 20px;
+}
+
+/* Geri Sayım Tasarımı */
 #countdown {
-  margin-top: 20px;
-  font-size: 2rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: #333;
+  letter-spacing: 1px;
+}
+
+/* Harita Alanı */
+.hotel-name {
   font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+  margin-bottom: 15px;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-top: 30px;
+.map-container {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-input,
+.map-link {
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #8c7853;
+  text-decoration: none;
+  border-bottom: 1px dashed #8c7853;
+}
+
+/* Form Tasarımı */
+.form-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+  color: #666;
+  font-weight: bold;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #e0decb;
+  border-radius: 12px;
+  background-color: #faf9f5;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #333;
+  outline: none;
+  transition: border 0.3s;
+}
+
+input:focus, textarea:focus {
+  border-color: #8c7853;
+}
+
 textarea {
-  padding: 15px;
-  border-radius: 15px;
-  border: none;
-  font-size: 1rem;
-  background: rgba(255, 255, 255, 0.95);
-  color: black;
+  height: 100px;
+  resize: none;
 }
 
 button {
-  padding: 15px;
+  width: 100%;
+  padding: 16px;
+  background-color: #8c7853;
+  color: #fff;
   border: none;
-  border-radius: 15px;
-  background: #d4af37;
-  color: black;
+  border-radius: 12px;
   font-size: 1rem;
-  cursor: pointer;
   font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 4px 12px rgba(140, 120, 83, 0.2);
 }
 
 button:hover {
-  transform: scale(1.03);
+  background-color: #736243;
+  transform: translateY(-1px);
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
