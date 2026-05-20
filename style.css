@@ -32,7 +32,7 @@ body {
   border: 1px solid rgba(140, 120, 83, 0.2);
 }
 
-/* 1. KATMAN: Ana Arka Plan (Yıldızlı Fotoğrafın: IMG_3250.PNG) */
+/* 1. KATMAN: Ana Arka Plan (IMG_3250.PNG) */
 .main-background {
   position: fixed;
   top: 0;
@@ -56,7 +56,7 @@ body {
   background-size: cover;
   background-position: center;
   z-index: -2;
-  opacity: 0.12; /* İki görsel birbiriyle karışsın diye şeffaf tuttuk */
+  opacity: 0.12;
   pointer-events: none;
 }
 
@@ -79,19 +79,18 @@ body {
   padding: 30px;
 }
 
+/* Baş Harf Monogram Mühür Ayarları */
 .seal {
-  width: 170px;
-  height: 170px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid #d4af37;
+  width: 180px;
+  height: 180px;
+  object-fit: contain; /* Harflerin kırpılmaması için tam sığdırma moduna aldık */
   cursor: pointer;
   transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0px 8px 25px rgba(212, 175, 55, 0.4);
+  filter: drop-shadow(0px 8px 20px rgba(212, 175, 55, 0.5)); /* Gold ışıltı gölgesi */
 }
 
 .seal:hover {
-  transform: scale(1.08) rotate(3deg);
+  transform: scale(1.08) rotate(2deg);
 }
 
 .seal-text {
@@ -159,7 +158,7 @@ h2 {
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
   color: #8c7853;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 #countdown {
@@ -170,18 +169,18 @@ h2 {
 
 .hotel-name {
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .map-container {
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .map-link {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 15px;
   color: #8c7853;
   text-decoration: none;
   font-weight: 600;
