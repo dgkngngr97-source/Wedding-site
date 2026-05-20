@@ -6,18 +6,19 @@
   <title>Doğukan & Egemen</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div class="stars"></div>
+<div class="main-background"></div>
+<div class="stars-effect"></div>
 
 <div class="seal-container" id="sealContainer">
   <div class="seal-wrapper">
     <img src="IMG_3236.PNG" class="seal" id="seal" alt="Mühür" />
-    <p class="seal-text">Mühüre Tıklayınız</p>
-    <p class="seal-subtext">Bu davetiye size özeldir</p>
+    <p class="seal-text">Doğukan & Egemen</p>
+    <p class="seal-subtext">Mühüre Tıklayınız</p>
   </div>
 </div>
 
@@ -29,27 +30,23 @@
   </audio>
 
   <section class="hero">
-    <div class="photo-frame">
-      <img src="pngwing.com.png" alt="Doğukan & Egemen" class="couple-photo">
-    </div>
     <h1 class="couple-names">Doğukan & Egemen</h1>
     <p class="invite-text">
       "Birlikte kurduğumuz hayalleri gerçeğe dönüştürdüğümüz ve hayatlarımızı birleştirdiğimiz bu özel günde, sevincimizi bizimle paylaşmanızdan büyük mutluluk duyacağız."
     </p>
   </section>
 
-  <section class="countdown-section">
+  <section class="countdown-section card">
     <h2>Düğünümüze Son</h2>
     <div id="countdown"></div>
   </section>
 
-  <section class="location">
+  <section class="location card">
     <h2>Düğün Salonu Konumu</h2>
     <p class="hotel-name">Görgülü Hotel — Edirne / Keşan</p>
-    
     <div class="map-container">
       <iframe
-        src="http://googleusercontent.com/maps.google.com/2"
+        src="https://maps.google.com/maps?q=G%C3%B6rg%C3%BCl%C3%BC%20Hotel%20Ke%C5%9Fan&t=&z=15&ie=UTF8&iwloc=&output=embed"
         width="100%"
         height="300"
         style="border:0;"
@@ -57,28 +54,24 @@
         loading="lazy">
       </iframe>
     </div>
-    <a href="https://maps.google.com" target="_blank" class="map-link">Konumu haritalarda açmak için tıklayın</a>
+    <a href="https://maps.app.goo.gl/9y9r9" target="_blank" class="map-link">Konumu haritalarda açmak için tıklayın</a>
   </section>
 
-  <section class="rsvp">
+  <section class="rsvp card">
     <h2>Lütfen Katılım Durumunuzu Bildirin</h2>
-
     <form action="https://formsubmit.co/dgkngngr97@gmail.com" method="POST">
       <div class="form-group">
         <label>Ad Soyad *</label>
         <input type="text" name="name" placeholder="Adınız ve Soyadınız" required>
       </div>
-
       <div class="form-group">
         <label>Kaç kişi katılıyorsunuz? (siz dahil)</label>
         <input type="number" name="person" placeholder="Kişi Sayısı" required>
       </div>
-
       <div class="form-group">
         <label>Bize bir not bırakın</label>
         <textarea name="message" placeholder="Mesajınız..."></textarea>
       </div>
-
       <button type="submit">Gönder</button>
     </form>
   </section>
