@@ -32,7 +32,7 @@ body {
   border: 1px solid rgba(140, 120, 83, 0.2);
 }
 
-/* 1. KATMAN: Ana Arka Plan (Yeni Yıldızlı Fotoğrafın: IMG_3250.PNG) */
+/* 1. KATMAN: Ana Arka Plan (Yıldızlı Fotoğrafın: IMG_3250.PNG) */
 .main-background {
   position: fixed;
   top: 0;
@@ -60,7 +60,7 @@ body {
   pointer-events: none;
 }
 
-/* Giriş Ekranı (Mühür Alanı) */
+/* Giriş Ekranı */
 .seal-container {
   position: fixed;
   top: 0;
@@ -79,7 +79,6 @@ body {
   padding: 30px;
 }
 
-/* Yuvarlak Fotoğraflı Mühür (IMG_3236.PNG) */
 .seal {
   width: 170px;
   height: 170px;
@@ -145,7 +144,7 @@ body {
   text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
 }
 
-/* Premium Beyaz Kartlar */
+/* Premium Kartlar */
 .card {
   background: rgba(255, 255, 255, 0.96);
   color: #4a4a4a;
@@ -189,7 +188,6 @@ h2 {
   border-bottom: 1px solid #8c7853;
 }
 
-/* Form Elemanları */
 .form-group {
   text-align: left;
   margin-bottom: 22px;
