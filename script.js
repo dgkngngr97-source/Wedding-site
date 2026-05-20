@@ -1,6 +1,5 @@
-// Düğün Tarihi Ayarı: 12 Haziran 2027 Saat 19:30
+// Düğün Tarihi Sayacı (12 Haziran 2027)
 const weddingDate = new Date("June 12, 2027 19:30:00").getTime();
-
 const countdownTarget = document.getElementById("countdown");
 
 const updateCountdown = setInterval(function() {
@@ -26,29 +25,33 @@ const updateCountdown = setInterval(function() {
   `;
 }, 1000);
 
-// Giriş Ekranı ve Müzik Kontrolleri
-const sealContainer = document.getElementById("sealContainer");
+// SİHİRLİ ZARF AÇILMA VE MÜZİK MOTORU
+const sealButton = document.getElementById("sealButton");
+const envelopeWrapper = document.getElementById("envelopeWrapper");
 const mainContent = document.getElementById("mainContent");
-const seal = document.getElementById("seal");
 const music = document.getElementById("music");
 const musicControl = document.getElementById("musicControl");
 
 let isPlaying = false;
 
-seal.addEventListener("click", () => {
-  sealContainer.style.transition = "opacity 1s ease";
-  sealContainer.style.opacity = "0";
+sealButton.addEventListener("click", () => {
+  // 1. Adım: Zarf kapağını aç (CSS tetikle)
+  envelopeWrapper.classList.add("open");
+  
+  // 2. Adım: Kapak açıldıktan sonra tüm zarfı aşağı kaydır ve ana ekranı getir
   setTimeout(() => {
-    sealContainer.style.display = "none";
+    envelopeWrapper.classList.add("slide-out");
     mainContent.style.display = "block";
-    // Müzik Başlatma
+    
+    // Müzik çalmaya başlasın
     music.play().then(() => {
       isPlaying = true;
       musicControl.querySelector(".music-text").innerText = "Müziği Kapat";
-    }).catch(err => console.log("Otomatik oynatma engellendi:", err));
-  }, 1000);
+    }).catch(err => console.log("Müzik engellendi:", err));
+  }, 700); // Kapak dönme hızına uyumlu senkronizasyon
 });
 
+// Müzik Kontrol Butonu Aç/Kapat
 musicControl.addEventListener("click", () => {
   if (isPlaying) {
     music.pause();
