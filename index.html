@@ -45,6 +45,19 @@
     <div id="countdown"></div>
   </section>
 
+  <section class="date-time-section card">
+    <h2>Düğün Tarihi & Saati</h2>
+    <div class="date-box">
+      <span class="calendar-icon">📅</span>
+      <p class="main-date">12 Haziran 2027</p>
+      <p class="sub-date">Cumartesi</p>
+    </div>
+    <div class="time-box">
+      <span class="clock-icon">⏰</span>
+      <p class="main-time">19:30 — 24:00</p>
+    </div>
+  </section>
+
   <section class="location card">
     <h2>Düğün Salonu Konumu</h2>
     <p class="hotel-name">Görgülü Hotel — Edirne / Keşan</p>
@@ -60,6 +73,7 @@
 
   <section class="rsvp card">
     <h2>Lütfen Katılım Durumunuzu Bildirin</h2>
+    <p class="rsvp-deadline">⚠️ Net davetli sayısı belirleyebilmemiz için en geç <strong>6 Haziran 2027</strong> tarihine kadar bildirmeniz rica olunur.</p>
     <form action="https://formsubmit.co/dgkngngr97@gmail.com" method="POST">
       <div class="form-group">
         <label>Ad Soyad *</label>
@@ -67,7 +81,7 @@
       </div>
       <div class="form-group">
         <label>Kaç kişi katılıyorsunuz? (siz dahil)</label>
-        <input type="number" name="person" placeholder="Kişi Sayısı" required>
+        <input type="number" name="person" placeholder="Kişi Sayısı" min="1" max="10" required>
       </div>
       <div class="form-group">
         <label>Bize bir not bırakın</label>
