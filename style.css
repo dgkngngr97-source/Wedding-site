@@ -158,27 +158,28 @@ body {
   max-width: 450px;
   margin: 0 auto;
   padding: 100px 18px 40px 18px;
-  /* Arka plandaki o asil Gece Takımyıldızı Tasarımı */
+  /* TELEFONDA ARKA PLANIN TAM KAPLAMASI İÇİN YAPILAN SİHİRLİ DÜZELTME */
   background-image: url('pngwing.com.png');
-  background-size: contain;
-  background-attachment: fixed;
-  background-position: center;
+  background-size: cover; /* Resmi ekrana sığdırır, boşluk bırakmaz */
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: scroll; /* Mobilde takılmayı önleyen pürüzsüz akış */
 }
 
-/* OVAL ÇİFT FOTOĞRAFI ALANI (VİDEODAKİ GİBİ ASİL) */
+/* OVAL ÇİFT FOTOĞRAFI ALANI */
 .hero-section {
   text-align: center;
   margin-bottom: 40px;
 }
 
 .oval-frame {
-  width: 240px;
-  height: 330px;
+  width: 260px; /* Fotoğrafınızın asilliğini göstermek için hafif büyütüldü */
+  height: 360px;
   margin: 0 auto 30px auto;
   border-radius: 50% / 40%; /* Kusursuz dikey oval görünüm */
   border: 3px solid #d4af37;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25);
+  box-shadow: 0 10px 35px rgba(212, 175, 55, 0.35);
 }
 
 .oval-frame img {
@@ -207,7 +208,7 @@ body {
 
 /* LUXURY PREMIUM KART YAPILARI */
 .luxury-card {
-  background: rgba(11, 19, 43, 0.75); /* Yarı şeffaf asil lacivert kart */
+  background: rgba(11, 19, 43, 0.85); /* Yarı şeffaf asil lacivert kart */
   border: 1px solid rgba(212, 175, 55, 0.2);
   border-radius: 24px;
   padding: 30px 20px;
